@@ -1,0 +1,77 @@
+.head{
+  height: 100px;
+  background-color: lightblue;
+  color: navy;
+
+}
+.cList{
+  width: 800px;
+
+}
+
+#td{
+    spacing:30px;
+    border: 1px solid gray;
+}
+.nav{
+  height: 30px;
+  background-color: navy;
+}
+.thead{
+  color: white;
+  background-color: navy;
+}
+.navA{
+  color: white;
+  margin-left: 20px;
+}
+.ordSuccess{
+  color: green;
+  text-align: center;
+  border: 1 dotted yellow;
+  height: 30px;
+  background-color:yellow;
+}
+.total{
+  background-color: gray;
+}
+  .img-thumbnail{
+    height:126px;
+    weight:126px;
+
+  }
+  .alLeft{
+    text-align: right;
+  }
+  #r{
+    color:red;
+    text-align:center;
+  }
+  #d{
+     padding-left:100px;
+     padding-up:0px;
+     padding-right:50px;
+     padding-bottom:0px;
+     border:1px solid grey;
+     background-color:grey;
+     margin-left:250px;
+     margin-up:0px;
+     margin-right:250px;
+     margin-bottom:0px;
+  }
+.cartEmp{
+  text-align: center;
+  background-color: navy;
+  color: white;
+
+}
+.card1{
+  width: 30rem;
+  height:20rem;
+}
+.star{
+  color:rebeccapurple;
+}
+.avatar-pic {
+  width: 150px;
+  }

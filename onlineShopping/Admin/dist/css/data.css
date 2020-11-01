@@ -1,0 +1,11 @@
+#load{
+
+  display: none;
+
+  font-size: 30px;
+
+}
+#loading{
+  text-align: center;
+  background-color: lightblue;
+}

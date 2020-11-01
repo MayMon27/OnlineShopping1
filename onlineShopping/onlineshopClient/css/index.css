@@ -1,0 +1,153 @@
+body {
+	background-color: white;
+	font-family: "Time News Roman";
+	position: relative;
+
+}
+#footer{
+	height: 130px;
+	background-color:  #2c3e50 ;
+	color: lightgray;
+
+}
+#footerTD{
+	width: 20%;
+}
+#footfont{
+	margin-left: 100px;
+}
+.rating{
+	color: orange;
+	font-size: 30px;
+}
+.logo {
+	border-radius: 50px;
+}
+
+.header {
+	background-color: rgb(0, 130, 130);
+	color: white;
+	font-weight: bold;
+	border-bottom-style: solid;
+	border-color: rgb(245,245,245);
+	position: relative;
+}
+
+.content {
+	max-height: 1000px;
+	min-height: 500px;
+	overflow-y: scroll;
+	background-color: white);
+}
+
+.footer {
+	background-color: rgb(0, 130, 130);
+	font-weight: bold;
+	color: white;
+	border-top-style: solid;
+	border-bottom-style: solid;
+	border-color: rgb(240,240,240);
+	position: relative;
+	text-align: center;
+	padding: 10px;
+}
+
+.menu {
+	background-color: rgb(230, 230, 230);
+}
+
+.menu-bar {
+	list-style-type: none;
+	margin: 0;
+	padding: 10px 10px 0 10px;
+	overflow: hidden;
+	width: 100%;
+	text-align: center;
+}
+
+.menu-bar li{
+	padding: 5px;
+	margin: 5px;
+	float: left;
+	margin-right: 8px;
+	border-bottom-color: rgb(255, 255, 255);
+	cursor: pointer;
+	width: 100%;
+	background-color: #DCDCDC;
+	color: black;
+	border-radius: 30px;
+}
+
+audio {
+	width: 100%;
+	height: auto;
+}
+.badge {
+  padding-left: 9px;
+  padding-right: 9px;
+  -webkit-border-radius: 9px;
+  -moz-border-radius: 9px;
+  border-radius: 9px;
+}
+
+.label-warning[href],
+.badge-warning[href] {
+  background-color: #c67605;
+}
+#lblCartCount {
+    font-size: 12px;
+    background: #ff0000;
+    color: #fff;
+    padding: 0 5px;
+    vertical-align: top;
+    margin-left: -10px;
+}
+
+.show-result {
+  margin: 10px;
+  padding: 10px;
+  color: green;
+  font-size: 20px;
+}
+
+.star-rating s:hover,
+.star-rating s.active {
+    color: orange;
+}
+.star-rating-rtl s:hover,
+.star-rating-rtl s.active {
+    color: orange;
+}
+
+.star-rating s,
+.star-rating-rtl s {
+    color: black;
+    font-size: 50px;
+    cursor: default;
+    text-decoration: none;
+    line-height: 50px;
+}
+.star-rating {
+    padding: 2px;
+}
+.star-rating-rtl {
+    background: #555;
+    display: inline-block;
+    border: 2px solid #444;
+}
+.star-rating-rtl s {
+    color: yellow;
+}
+.star-rating s:hover:before,
+.star-rating s.rated:before,
+.star-rating s.active:before {
+    content: "\2605";
+}
+.star-rating s:before {
+    content: "\2606";
+}
+.star-rating-rtl s:hover:after,
+.star-rating-rtl s.rated:after,
+.star-rating-rtl s.active:after {
+    content: "\2605";
+}

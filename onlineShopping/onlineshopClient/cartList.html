@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/css/bootstrap.min.css" integrity="sha384-VCmXjywReHh4PwowAiWNagnWcLhlEJLA5buUprzK8rxFgeH0kww/aWY76TfkUoSX" crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../Admin/plugins/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="css/cart.css">
+  <link rel="stylesheet" href="css/index.css">
+  <script src="jquery.js"></script>
+  <script src="js/index.js"></script>
+  <script src="js/cartList.js"></script>
+  </head>
+
+  <body onload="RetrieveCart();">
+     <div class="container">
+      <nav class="navbar navbar-light bg-light">
+        <span>
+          <img src="image/logo.jpg" alt="" style="width:50px;">
+          <a class="navbar-brand" href="home.html">Home</a>
+          <a class="navbar-brand" onclick="logOut('back');" id='logout'>LogOut</a>
+          <a class="navbar-brand" href="profile.html"   id='profile'><i class='far fa-user'></i></a>
+
+        </span>
+      <span align="right"  >
+        <!-- <a class="navbar-brand" onclick="cartClick();" id='navcart'>
+        <i class="fa" style="font-size:24px">&#xf07a;</i><span class='badge badge-warning' id='lblCartCount'>  </span>
+      </a> -->
+        <a class="navbar-brand" href='customerorderHistory.html' id='history'>History</a>
+      </span>
+    </nav>
+    </div>
+    <br>
+    <h3 id='nodata' align="center"></h3>
+    <div class="container"  id='carttableshow'  align="center">
+
+     <table>
+       <tr class="thead" id='dark'>
+         <th style="width:5%">No</th>
+         <th style="width:20%">Product</th>
+         <th style="width:20%">ProductName</th>
+         <th style="width:10%">Color</th>
+         <th style="width:10%">Size</th>
+         <th style="width:5%">Qty</th>
+         <th style="width:10%">Price</th>
+         <th style="width:15%">Amount</th>
+         <th style="width:10%"></th>
+       </tr>
+       <tbody id="cart"></tbody>
+       </table>
+       <div id="checkbtns">
+         <a href="home.html"><input type="button" name="" value="Continute Shooping"></a>
+        <input id='checkout'type="button" name="" value="Check Out" onclick="calluserdata() "><br><br>
+       </div>
+
+
+   </div>
+
+     <div class="container" id='address' style="margin-left:250px;">
+       <br><br>
+       <div  id="user_data" >
+         </div>
+         <button type="button" name="button" class='btn btn-primary' onclick="insertorderform('old');">Sent to this address.</button>
+         <br><br>
+       <h3 ><span style="background-color:orange;">Add New Address</span></h3>
+       <table>
+       <tr>
+           <td>Phone Number<br><br></td>
+           <td>: <input type="textarea" id="ph_no"><br><br></td>
+         </tr>
+         <tr>
+           <td>Address   :<br></td>
+           <td> <textarea id="newAddress" rows="2" ></textarea><br></td>
+         </tr>
+       </table>
+         <button type="button" name="button" class="btn btn-primary"
+             onclick="insertorderform('new')">Sent to New address</button>
+
+     </div>
+
+
+     <div class="container">
+       <footer id='footer'>
+         <br>
+         <div class="" id='footfont'>
+           <table>
+             <tr>
+               <td ><h5>Contact Us</h5>
+               hotline- 09-79734149<br>
+               phone- 09-34553453,09-45454334,09-45345453
+	<br>
+             </td >
+               <td id='footerTD'>
+
+               </td>
+               <td>
+              Gmail:berry223@gmail.com<br>
+              Follow us : &nbsp;&nbsp;<i class="fab fa-facebook">&nbsp;&nbsp;</i><i class="fab fa-instagram"></i>&nbsp;&nbsp;<i class="fab fa-twitter"></i>
+               </td>
+             </tr>
+           </table>
+
+
+         </div>
+
+       </footer>
+     </div>
+
+  </body>
+</html>

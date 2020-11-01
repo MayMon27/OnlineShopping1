@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <title>Online Shopping</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- jquery -->
+    <script type="text/javascript" src="jquery.js"></script>
+    <!-- bootstrap -->
+    <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <!-- created -->
+    <script type="text/javascript" src="js/index.js"></script>
+    <script type="text/javascript" src="js/selectoption.js"></script>
+    <script type="text/javascript" src='js/productDetail.js'>  </script>
+    <!-- <script type="text/javascript" src="js/product.js"></script> -->
+
+    <link rel="stylesheet" href="css/index.css">
+
+    <link rel="stylesheet" href="../Admin/dist/css/data.css">
+    <link rel="stylesheet" href="../Admin/plugins/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  </head>
+  <body onload="loadNav()" >
+<div class="container">
+  <div class="container">
+    <nav class="navbar navbar-light bg-light">
+      <span>
+        <img src="image/logo.jpg" alt="" style="width:50px;">
+        <a class="navbar-brand" href="home.html">Home</a>
+        <a class="navbar-brand" onclick="loginHome();" id='login'>LogIn</a>
+        <a class="navbar-brand" onclick="registerForm('home');" id='register'>Register</a>
+        <a class="navbar-brand" onclick="logOut('customer');" id='logout'>LogOut</a>
+        <a class="navbar-brand" href="profile.html"   id='profile'><i class='far fa-user'></i></a>
+
+      </span>
+    <span align="right"  >
+      <a class="navbar-brand" onclick="cartClick();" id='navcart'>
+      <i class="fa" style="font-size:24px">&#xf07a;</i><span class='badge badge-warning' id='lblCartCount'>  </span>
+    </a>
+      <a class="navbar-brand" href='customerorderHistory.html' id='history'>History</a>
+    </span>
+  </nav>
+  </div>
+
+
+
+<div class="container" align="center" id="cart">
+<form class="form-inline" method="post">
+<div class="container">
+
+<select class="form-control" id="parent" onclick="TPTC()" style="color:green;width:200px;">
+
+</select>
+
+<select class="form-control" id="child" style="color:green;width:200px;">
+
+</select>
+
+<button type="button" name="button" class="btn btn-primary" onclick="Search()">Search</button>
+</div>
+</form>
+</div><br>
+<div class="container" id="h1img">
+
+  <img src="image/home.jpg" width="100%">
+
+</div>
+</div>
+<!-- ------------------------------------------------------------------>
+<div id="load" >
+  <p id="loading"><i class="fa fa-spin fa-spinner"></i> loading...</p>
+
+</div>
+<!-- ------------------------------------------------------------------>
+
+<div class="container" id="rev">
+
+    <h3 id="commentTableBody"></h3>
+
+</div>
+<div class="container" id='loginForm'>
+  <!-- Employee Register Modal -->
+  <div class="modal fade" id="loginModal" role="dialog">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Login</h4>
+          <button type="button" class="close" onclick="ClearloginModal();">&times;</button>
+        </div>
+        <div class="modal-body">
+          <form role="form">
+            <table class="table">
+
+              <tr>
+                <th><label>Email</label></th>
+                <td><input type="email" class="form-control" id="email" required></td>
+              </tr>
+              <tr>
+                <th><label>PassWord</label></th>
+                <td><input type="password" min="0" max="120" class="form-control" id="password" required></td>
+              </tr>
+            </table>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success btn-md" onclick="loginCheck();">Login</button>
+          <button type="button" class="btn btn-success btn-md" onclick="registerForm('buy');">Register</button>
+          <button type="button" class="btn btn-warning btn-md" onclick="ClearloginModal();">Cancle</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  <div class="container" id='registerForm'>
+    <!-- Employee Register Modal -->
+    <div class="modal fade" id="registerModal" role="dialog">
+      <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Register</h4>
+            <button type="button" class="close" onclick="ClearRegisterModal();">&times;</button>
+          </div>
+          <div class="modal-body">
+            <form role="form">
+              <table class="table">
+
+                <tr>
+                  <td>Name </td>
+                  <td>: <input type="text" id="rname" value="" required></td>
+                </tr>
+                <tr>
+                  <td>Email</td>
+                  <td>: <input type="email" id="remail" value="" required></td>
+                </tr>
+                <tr>
+                  <td>Password</td>
+                  <td>: <input type="password" id="rpassword" value="" required></td>
+                </tr>
+                <tr>
+                  <td>Confirm Password</td>
+                  <td>: <input type="password" id="confirmPassword" value="" required></td>
+                </tr>
+
+                <tr>
+                  <td>Phone Number</td>
+                  <td>: <input type="number" id="phone" value="" required></td>
+                </tr>
+                <tr>
+                  <td>Address</td>
+                  <td>: <input type="text" id="address" value="" required></td>
+                </tr>
+                <tr>
+                  <td>Card Holder Name</td>
+                  <td>: <input type="text"  value=""  required></td>
+                </tr>
+                <tr>
+                  <td>Card Number</td>
+                  <td>: <input type="number" id="cardNumber" value="" placeholder=".... .... .... ...." required></td>
+                </tr>
+                <tr>
+                  <td>Expire Date</td>
+                  <td>: <input type="text"  value="" placeholder="../.." required></td>
+                </tr>
+
+                <tr>
+                  <td>CVC</td>
+                  <td>: <input type="number"  value="" placeholder="..." required></td>
+                </tr>
+
+
+              </table>
+            </form>
+          </div>
+          <div class="modal-footer">
+          <button type="button" class="btn btn-success btn-md" onclick="insertCustomer('buy');">Register</button>
+            <button type="button" class="btn btn-warning btn-md" onclick="ClearRegisterModal();">Cancle</button>
+          </div>
+        </div>
+      </div>
+    </div>
+<!-- -------------------------------------------------------------------------------------------------- -->
+
+
+
+<!------------------------------FORLIST--------------------------->
+<div class="container" id="list">
+     <table align="center">
+       <tbody id="searchproduct">
+         <thread>
+           <div id="paginationdemo" class="demo">
+              <div id="pagesContainer">
+                 <div id="p1" class="pagedemo _current"></div>
+              </div>
+               <div id="demo5"></div>
+           </div>
+         </thread>
+       </tbody>
+     </table>
+     <div class="container" align="center">
+       <button type="button" class="btn btn-outline-warning" name="button" id="b2" value=-1 hidden onclick="previous()">Previous</button>
+    <button type="button" class="btn btn-outline-danger" name="button" id="b1" value=1 hidden onclick="next()">Next</button>
+     </div>
+</div>
+<div class="container">
+  <footer id='footer'>
+    <br>
+    <div class="" id='footfont'>
+      <table>
+        <tr>
+          <td ><h5>Contact Us</h5>
+          hotline- 09-79734149<br>
+          phone- 09-34553453,09-45454334,09-45345453<br>
+        </td >
+          <td id='footerTD'>
+
+          </td>
+          <td>
+         Gmail:berry223@gmail.com<br>
+         Follow us : &nbsp;&nbsp;<i class="fab fa-facebook">&nbsp;&nbsp;</i><i class="fab fa-instagram"></i>&nbsp;&nbsp;<i class="fab fa-twitter"></i>
+          </td>
+        </tr>
+      </table>
+
+
+    </div>
+
+  </footer>
+</div>
+
+  </body>
+</html>

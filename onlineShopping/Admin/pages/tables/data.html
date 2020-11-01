@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>AdminLTE 3 | DataTables</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+  <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
+
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <!--  DataTables -->
+  <link rel="stylesheet" href="../../plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" href="../../plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
+  <link rel="stylesheet" href="../../dist/css/data.css">
+  <!-- Google Font: Source Sans Pro -->
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+
+
+
+</head>
+<body class="hold-transition sidebar-mini" >
+<div class="wrapper">
+  <!-- Navbar -->
+  <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+    <!-- Left navbar links -->
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+      </li>
+      <li class="nav-item d-none d-sm-inline-block">
+        <a onclick="logOut('admin')" class="nav-link">LogOut</a>
+      </li>
+      <li class="nav-item d-none d-sm-inline-block">
+        <!-- <a href="#" class="nav-link">Contact</a> -->
+      </li>
+    </ul>
+
+    <!-- SEARCH FORM -->
+
+    <!-- Right navbar links -->
+    <ul class="navbar-nav ml-auto">
+      <!-- Messages Dropdown Menu -->
+
+    </ul>
+  </nav>
+  <!-- /.navbar -->
+
+  <!-- Main Sidebar Container -->
+  <aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <!-- Brand Logo -->
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <!-- Sidebar user (optional) -->
+      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+        <!-- <img src="../../../onlineshopClient/image/logo.jpg" height="30px;" >Berry -->
+      </div>
+
+      <!-- Sidebar Menu -->
+      <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+
+
+          <li class="nav-item has-treeview menu-open">
+            <a href="#" class="nav-link active">
+              <!-- <i class="nav-icon fas fa-table"></i> -->
+              <i class="nav-icon fas fa-user-tie"></i>
+              <p>
+
+                Admin
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+
+            <ul class="nav nav-treeview">
+
+              <!-- ////////// order Dropdown/////// -->
+              <li class="nav-item has-treeview" >
+                <a href="#" class="nav-link active" >
+                  <i class="nav-icon fa fa-shopping-cart"></i>
+                  <p>Orders
+                  <i class="fas fa-angle-left right"></i>
+                </p>
+                </a>
+                <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a onclick="showOrder('False')" class="nav-link active">
+                      <i class="fa fa-cart-arrow-down nav-icon"></i>
+                      <p>New Order</p>
+                    </a>
+                  </li>
+
+              <li class="nav-item">
+                <a onclick="showOrder('True')" class="nav-link active">
+                  <i class="fa fa-table nav-icon"></i>
+                  <p>Order History</p>
+                </a>
+              </li>
+                </ul>
+              </li>
+        <!-- ////////////////////////Product Dropdown///////////// -->
+              <li class="nav-item has-treeview" >
+                <a href="#" class="nav-link active" >
+                  <i class="nav-icon fas fa-tshirt"></i>
+                  <p>Product
+                  <i class="fas fa-angle-left right"></i>
+                </p>
+                </a>
+                <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                <a onclick="AddnewProduct();" class="nav-link active">
+                  <i class="fa fa-plus-square nav-icon"></i>
+                  <p>Add New Product</p>
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a onclick="addHeader('productList')"class="nav-link active">
+                  <i class="fa fa-table nav-icon"></i>
+                  <p>Product List</p>
+                </a>
+              </li>
+                </ul>
+              </li>
+
+<!------ categories---->
+<li class="nav-item">
+  <a onclick="categories()" class="nav-link active">
+    <i class="fa fa-table nav-icon"></i>
+    <p>Categories</p>
+  </a>
+
+</li>
+<!-- //////// customer/// -->
+<li class="nav-item">
+  <a onclick="showCustomerList();" class="nav-link active">
+    <i class="fa fa-users nav-icon"></i>
+    <p>CustomerList</p>
+  </a>
+
+
+</li>
+
+
+
+        </ul>
+      </nav>
+      <!-- /.sidebar-menu -->
+    </div>
+    <!-- /.sidebar -->
+  </aside>
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1 id="pagename"></h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item" >Admin</li>
+              <li class="breadcrumb-item active" id='breadcrumb-item'></li>
+            </ol>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">
+
+            <!-- /.card -->
+
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title" id='card-title'></h3>
+              </div>
+           <!-- add new Product -->
+              <div class="card-body" id='addProduct' hidden>
+                <body onload="pulldata();">
+                  <div class="form-group" >
+                    <label  class="col-md-4 control-label" for="PRODUCT_CODE">PRODUCT CODE</label>
+                    <div class="col-md-4">
+                      <input name="PRODUCT_CODE" id='productcode' readonly="true" class="form-control input-md" required="" value="" type="text">
+                    </div>
+                  </div>
+                  <br/>
+
+                  <div class="form-group" >
+                    <label  class="col-md-4 control-label" for="PRODUCT_CODE">PRODUCT Name</label>
+                    <div class="col-md-4">
+                      <input name="PRODUCT_Name" id='productname'  class="form-control input-md" required="" value="" type="text">
+                    </div>
+                  </div>
+                  <br/>
+
+                  <div class="form-group">
+                    <div class="col-md-4">
+                  <p>
+                          Main categories:
+                          <select id="select1">
+
+                          </select>
+                      </p>
+                </div>
+              </div>
+
+                  <!-- Split dropright button -->
+
+
+                  <div class="form-group" >
+                    <label class="col-md-4 control-label" for="Description">Description</label>
+                    <div class="col-md-4">
+                      <input name="Description" id='description' class="form-control input-md" value="" type="text">
+                    </div>
+                  </div>
+                  <br>
+                  <div class="form-group" >
+                    <label  class="col-md-4 control-label" for="Color">Brand</label>
+                    <div class="col-md-4">
+                      <input name="" id='brand' value="" class="form-control input-md" type="text">
+                    </div>
+                  </div>
+                  <br>
+                  <div class="form-group" >
+                    <label  class="col-md-4 control-label" for="Size">Price</label>
+                    <div class="col-md-4">
+                      <input name="" id='price' value="" class="form-control input-md" type="text">
+                    </div>
+                  </div>
+                  <button type="button" value="Add Row" class="ml-5" onclick="addRow('dataTable')"> <img src="../images/circle_plus.png" alt="">
+                   </button>
+                   <button type="button" value="Delete Row" onclick="deleteRow('dataTable')"> <img src="../images/bin.png" alt=""></button>
+
+                <div class="container">
+                  <form id="myForm">
+                    <table class="table ml-3" id="dataTable">
+                      <thead class="thead-light">
+                        <tr>
+                          <th scope="col" style="width:5px;"></th>
+                          <th scope="col" style="width:15px;">color</th>
+                          <th scope="col">size</th>
+                          <th scope="col">Qty</th>
+                          <th scope="col"></th>
+                          <th scope="col"></th>
+                          <th scope="col">image1</th>
+                          <th scope="col">image2</th>
+                          <th scope="col"></th>
+
+                        </tr>
+                      </thead>
+                      <tbody id='addPdtBody'>
+                        <tr>
+                          <th scope="row" ></th>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                        </tr>
+                      </tbody>
+                 </table>
+
+                  </form>
+                </div>
+
+
+
+                  <div>
+                    <div>
+                      <button  class="btn btn-primary "  id="btn" onclick="getOption();">Save</button>
+                    </div>
+                  </div>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body" id='showDTTable'>
+                <h1 id='welcome' style="text-align:center;">Welcome Admin Pages</h1>
+                <div id="load" >
+                  <p id="loading"><i class="fa fa-spin fa-spinner"></i> loading...</p>
+
+                </div>
+
+                <table id="dttable" class="table table-bordered table-striped">
+                  <thead id='thead'>
+                  <tr>
+                    <th id='th1'></th>
+                    <th id='th2'></th>
+                    <th id='th3'></th>
+                    <th id='th4'></th>
+                    <th id='th5'></th>
+                    <th id='th6'></th>
+                    <th id='th7'></th>
+                    <th id='th8'></th>
+
+
+                  </tr>
+                  </thead>
+                  <tbody id="tablebody">
+
+
+                  </tbody>
+
+                </table>
+              </div>
+   <!-- edit/delete customer -->
+              <div class="container" aligh='center' id='editCustomer' hidden>
+                <h2>Update Profile</h2>
+
+                <table>
+                  <tr>
+                    <td>Name <br><br></td>
+                    <td>: <input type="text" id="name" value=""><br><br></td>
+                  </tr>
+                  <tr>
+                    <td>Email<br><br></td>
+                    <td>: <input type="text" id="email" value=""><br><br></td>
+                  </tr>
+                  <tr>
+                    <td>Password<br><br></td>
+                    <td>: <input type="text" id="password" value=""><br><br></td>
+                  </tr>
+
+                  <tr>
+                    <td>Phone Number<br><br></td>
+                    <td>: <input type="textarea" id="phone" value=""><br><br></td>
+                  </tr>
+                  <tr>
+                    <td>Address<br><br></td>
+                    <td>: <input type="text" id="address" value=""><br><br><br></td>
+                  </tr>
+
+
+                  <tr>
+                    <td>Card Number<br><br></td>
+                    <td>: <input type="text" id="cardNumber" value=""><br><br></td>
+                  </tr>
+
+                  <tr>
+                    <td></td>
+                    <td id='saveBtn'> </td>
+                </tr>
+                </table>
+              </div>
+
+              <!-- -------------------------------categories--------------------------------- -->
+
+              <div class="container" id="categories" hidden>
+                <h1>Categories Information</h1>
+                <button type="button" class="btn btn-success btn-md" data-toggle="modal" data-target="#categoriesRegisterModal">Add New Categories</button><br><br>
+                <table class="table table-striped" id="studentTable">
+                  <thead>
+                    <tr>
+                      <th>ID</th>
+                      <th>Parent Categories</th>
+                      <th>Child Categories</th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody id="categoriesTableBody">
+                    <thread>
+                      <!-- Here is the employee information that retrieves form employee table -->
+                    </thread>
+                  </tbody>
+                </table>
+              </div>
+
+              <!-- ############################################################################################################################## -->
+
+              <div class="container">
+                <!-- Employee Register Modal -->
+                <div class="modal fade" id="categoriesRegisterModal" role="dialog">
+                  <div class="modal-dialog">
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h4 class="modal-title">Add New Categories </h4>
+                        <button type="button" class="close" onclick="ClearCategoriesRegisterModal();">&times;</button>
+                      </div>
+                      <div class="modal-body">
+                        <form role="form">
+                          <table class="table">
+
+                            <tr>
+                              <th><label>Parent Categories</label></th>
+                              <td><input type="text" class="form-control" id="reP" name="pa"></td>
+                            </tr>
+                            <tr>
+                              <th><label>Child Categories</label></th>
+                              <td><input type="text" min="0" max="120" class="form-control" id="reC"></td>
+                            </tr>
+                          </table>
+                        </form>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-success btn-md" onclick="CreateCategories();">Save</button>
+                        <button type="button" class="btn btn-warning btn-md" onclick="ClearCategoriesRegisterModal();">Cancle</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              <!-- ------------------------------------------------------------------------------------------------------------------- -->
+
+              <div class="modal fade" id="categoriesUpdateModal" role="dialog">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h4 class="modal-title">Edit Categories </h4>
+                      <button type="button" class="close" onclick="ClearCategoriesUpdateModal();">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                      <form role="form">
+                        <table class="table">
+                          <tr>
+                            <th><label>ID</label></th>
+                            <td><input type="number" class="form-control" id="uId" readonly></td>
+                          </tr>
+                          <tr>
+                            <th><label>Parent Categories</label></th>
+                            <td><input type="text" class="form-control" id="uParent"></td>
+                          </tr>
+                          <tr>
+                            <th><label>Child Categories</label></th>
+                            <td><input type="text" class="form-control" id="uChild"></td>
+                          </tr>
+                        </table>
+                      </form>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-success btn-md" onclick="UpdateCategories();">Update</button>
+                      <button type="button" class="btn btn-danger btn-md" onclick="DeleteCategories();">Delete</button>
+                      <button type="button" class="btn btn-warning btn-md" onclick="ClearCategoriesUpdateModal();">Cancle</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- ------------------------------------categories---------------------------------------------------------------------- -->
+<!-- -----------------------------------orderDetail----------------- -->
+
+<div class="modal fade" id="orderDetailModal" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Invoice Detail</h4>
+        <button type="button" class="close" onclick="ClearInvoiceModal();">&times;</button>
+      </div>
+      <div class="modal-body">
+        <form role="form">
+          <table class="table">
+            <tr class="thead" id='dark'>
+              <th style="width:5%">No</th>
+              <th style="width:20%">Image</th>
+              <th style="width:20%">ProductID</th>
+              <th style="width:10%">Qty</th>
+              <th style="width:10%">Price</th>
+              <th style="width:15%">Amount</th>
+            </tr>
+            <tbody id="orderDetail"></tbody>
+          </table>
+        </form>
+      </div>
+      <div class="modal-footer" id='invoiceFooter'>
+        <button  id='btnorderConfirm' onclick='comfirm()' class='btn btn-primary' >Comfirm</button>
+        <button type="button" class="btn btn-warning btn-md" onclick="ClearInvoiceModal();">Cancle</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!---------------------------------------------------------->
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+      </div>
+      <!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+  <footer class="main-footer">
+    <div class="float-right d-none d-sm-block">
+
+  </footer>
+
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+  </aside>
+  <!-- /.control-sidebar -->
+</div>
+<!-- ./wrapper -->
+
+<!-- jQuery -->
+
+  <script src="../../plugins/jquery/jquery.min.js"></script>
+
+
+<!-- Bootstrap 4 -->
+<script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- DataTables -->
+<script src="../../dist/js/deliveryorder.js"></script>
+<script src="../../dist/js/detailproductlist.js"></script>
+<script src="../../../onlineshopClient/js/index.js"></script>
+<script src="../../dist/js/customerlist.js"></script>
+<script src="../../dist/js/categories.js"></script>
+<script src="../../plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="../../plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="../../plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="../../plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+<!-- AdminLTE App -->
+<script src="../../dist/js/adminlte.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="../../dist/js/demo.js"></script>
+<!-- page script -->
+
+<script type="text/javascript">
+
+
+</script>
+
+<!-- Control Sidebar -->
+<aside class="control-sidebar control-sidebar-dark">
+  <!-- Control sidebar content goes here -->
+</aside>
+<!-- /.control-sidebar -->
+</div>
+<!-- ./wrapper -->
+
+<!-- jQuery -->
+
+<script type="text/javascript" src="../../dist/js/AddnewProduct1.js"></script>
+
+
+</body>
+</html>

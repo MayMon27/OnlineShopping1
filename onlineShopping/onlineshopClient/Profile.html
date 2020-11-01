@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <script type="text/javascript" src="jquery.js"></script>
+      <script type="text/javascript" src="js/index.js"></script>
+    <title></title>
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="../Admin/dist/css/data.css">
+    <link rel="stylesheet" href="../Admin/plugins/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  </head>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/css/bootstrap.min.css" integrity="sha384-VCmXjywReHh4PwowAiWNagnWcLhlEJLA5buUprzK8rxFgeH0kww/aWY76TfkUoSX" crossorigin="anonymous">
+  <body onload="ShowEachCustomer('customer')">
+    <script type="text/javascript" src="select.js">
+    </script>
+    <div class="container">
+      <nav class="navbar navbar-light bg-light">
+        <span>
+          <img src="image/logo.jpg" alt="" style="width:50px;">
+          <a class="navbar-brand" href="home.html">Home</a>
+          <a class="navbar-brand" onclick="logOut('customer');" id='logout'>LogOut</a>
+        </span>
+      <span align="right"  >
+        <a class="navbar-brand" onclick="cartClick();" id='navcart'>
+        <i class="fa" style="font-size:24px">&#xf07a;</i><span class='badge badge-warning' id='lblCartCount'>  </span>
+      </a>
+        <a class="navbar-brand" href='customerorderHistory.html' id='history'>History</a>
+      </span>
+    </nav>
+    </div>
+
+    <div class="container"  style="margin-left:250px;">
+      <br><br>
+      <h2>Update Profile</h2>
+
+      <table>
+        <tr>
+          <td>Name <br><br></td>
+          <td>: <input type="text" id="name" value=""><br><br></td>
+        </tr>
+        <tr>
+          <td>Email<br><br></td>
+          <td>: <input type="text" id="email" value=""><br><br></td>
+        </tr>
+        <tr>
+          <td>Password<br><br></td>
+          <td>: <input type="text" id="password" value=""><br><br></td>
+        </tr>
+
+        <tr>
+          <td>Phone Number<br><br></td>
+          <td>: <input type="textarea" id="phone" value=""><br><br></td>
+        </tr>
+        <tr>
+          <td>Address<br><br></td>
+          <td>: <input type="text" id="address" value=""><br><br></td>
+        </tr>
+
+        <tr>
+          <td>Card Number<br><br></td>
+          <td>: <input type="text" id="cardNumber" value=""><br><br></td>
+        </tr>
+
+        <tr>
+          <td></td>
+          <td id='savebtn'> </td>
+      </tr>
+      <tr>
+        <td></td>
+        <td id='saveBtn'> </td>
+    </tr>
+      </table>
+
+
+    </div>
+  </body>
+</html>
